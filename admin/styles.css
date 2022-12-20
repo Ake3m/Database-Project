@@ -1,0 +1,28 @@
+#config_choices{
+    display:flex;
+    justify-content: center;
+    
+}
+
+.box{
+    display:block;
+    padding:20px;
+    margin: 10px;
+    width: 300px;
+
+    background-color: dodgerblue;
+    font-size: 20px;
+    text-align: center;
+    line-height: 150px;
+    text-decoration: none;
+}
+
+
+.addBtn{
+    display:block;
+    width:100px;
+    background-color:greenyellow;
+    text-decoration: none;
+    padding: 10px;
+    text-align:center;
+}

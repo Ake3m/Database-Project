@@ -1,5 +1,5 @@
 <?php
-    include_once("connection.php");
+    include_once("../connection.php");
     include_once("adminFunctions.php");
     session_start();
     if(isset($_POST['adminlogin']))

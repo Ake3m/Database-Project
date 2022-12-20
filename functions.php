@@ -3,7 +3,9 @@ function check_login($con)
 {
    if($_SESSION['email'])
    {
-        $email=$_SESSION['email'];
+    $email=$_SESSION['email'];
+    if($_SESSION['accountType']==='R')
+    {
         $query = "select * from user_info where email_address='$email';";
         $result=mysqli_query($con, $query);
         if($result && mysqli_num_rows($result)>0)
@@ -11,6 +13,17 @@ function check_login($con)
             $user_data=mysqli_fetch_assoc($result);
             return $user_data;
         }
+    }
+    else if($_SESSION['accountType']==='D')
+    {
+        $query="select * from doctor_information where email_address='$email';";
+        $result=mysqli_query($con, $query);
+        if($result && mysqli_num_rows($result)>0)
+        {
+            $doctor_data=mysqli_fetch_assoc($result);
+            return $doctor_data;
+        }
+    }
    }
    else{
     header("Location: login.php");
@@ -130,8 +143,10 @@ function loginUser($con, $email, $password)
     }
     else if($checkedPassword===true)
     {
+
         session_start();
         $_SESSION['email']= $emailExists['email_address'];
+        $_SESSION['accountType']=$emailExists['account_type'];
         header("location: index.php");
         exit();
     }

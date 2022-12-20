@@ -5,6 +5,15 @@
 
 	$user_data=check_login($con);
 	$_SESSION['user_data']=$user_data;
+	if($_SESSION['accountType']==='D')
+	{
+		if(!isset($user_data['professional_statement']) && !isset($user_data['active_since']))
+		{
+			header("location:doctorRegistration.php");
+			exit();
+		}
+	}
+	$_SESSION['user_data']=$user_data;
 ?>
 <!DOCTYPE html>
 <html>

@@ -130,12 +130,22 @@ create table appointment(
     foreign key(user_id) references user_info(user_id),
     foreign key(doctor_id) references doctor_information(doctor_id),
     foreign key(appointment_status_id) references appointment_status(id),
-    foreign key(office_id) references offices(office_id),
+    foreign key(office_id) references offices(office_id)
     -- CHECK (HOUR(probable_start_time)>=9 AND HOUR(probable_start_time)<12),
     -- CHECK (HOUR(probable_start_time)>=14 AND HOUR(probable_start_time)<17),
     -- constraint check_endtime_after_startTime CHECK (actual_end_time>probable_start_time)
 );
 
+
+--alter  table segments
+ALTER TABLE login_info
+ADD account_type char(1) not null;
+
+ALTER TABLE doctor_information
+ADD email_address varchar(255) not null unique;
+
+ALTER TABLE doctor_information
+ADD FOREIGN KEY(email_address) REFERENCES login_info(email_address);
 
 
 
