@@ -74,4 +74,18 @@ function addDoctor($con, $doc_email, $doc_firstname, $doc_surname){
     header("location: adminpanel.php?error=none");
 }
 
+function addSpecialization($con, $specialization_name)
+{
+    $addQuery="INSERT INTO specialization(specialization_name) VALUES('$specialization_name');";
+    if(!mysqli_query($con, $addQuery))
+    {
+        header("location: manageSpecialization.php?error=inputerror");
+        exit();
+    }
+    else{
+        header("location: manageSpecialization.php?error=none");
+        exit();
+    }
+}
+
 ?>

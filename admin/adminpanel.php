@@ -21,6 +21,9 @@ include_once("adminHeader.php");
         <a  class="box" href="manageCustomers.php"> 
                 Manage customers
         </a>
+        <a  class="box" href="manageSpecialization.php"> 
+                Manage specilizaions
+        </a>
     </div>
 </body>
 </html>

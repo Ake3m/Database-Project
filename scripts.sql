@@ -148,4 +148,9 @@ ALTER TABLE doctor_information
 ADD FOREIGN KEY(email_address) REFERENCES login_info(email_address);
 
 
+--make changes to tables with foreign key constraints 
+SET FOREIGN_KEY_CHECKS = 0;
+SET GLOBAL FOREIGN_KEY_CHECKS=0;
 
+SET FOREIGN_KEY_CHECKS = 1;
+SET GLOBAL FOREIGN_KEY_CHECKS=1;

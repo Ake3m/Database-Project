@@ -1,3 +1,10 @@
 label{
     display:block;
 }
+
+.specialization_box label{
+    display:inline;
+}
+.schedule label{
+    display:inline;
+}
