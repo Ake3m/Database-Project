@@ -1,40 +1,79 @@
 <?php
 include_once("connection.php");
-include_once("doctorFunctions.php")
+include_once("functions.php");
+include_once("doctorFunctions.php");
 session_start();
 
 
-if(isset($_POST['regsiterDoctor']))
+if(isset($_POST['registerDoctor']))
 {
     //BASIC INFORMATION
+    $id=$_SESSION['doc_id'];
+    $email=$_SESSION['email'];
     $first_name=$_POST['fname'];
     $surname=$_POST['sname'];
     $personal_statement=$_POST['pStatement'];
-    $active_since=$POST['active_since_date'];
+    $active_since=$_POST['active_since_date'];
+    
     //ACCOUNTINFORMATION
-    $newPassword=$_POST['password'];
-    $newPassword2=$_POST['password2'];
+    $newPassword=$_POST['newpassword'];
+    $newPassword2=$_POST['newpassword2'];
+    
     //MEDICAL EXPERIENCE INFORMATION
     $quaification_name=$_POST['qualification_name'];
-    $institude_name=$_POST['institute_name'];
+    $institute_name=$_POST['institute_name'];
     $procurementDate=$_POST['pdate'];
     $speciality_list=$_POST['specialty'];
+   
     //HOSPITAL INFORMATION
     $hospital_name=$_POST['hospital_name'];
     $hospital_city=$_POST['hospital_city'];
     $hospital_country=$_POST['hospital_country'];
     $start_date=$_POST['start_date'];
     $end_date=$_POST['end_date'];
+    
     //SCHEDULE INFORMATION
     $monday=$_POST['monday'];
     $tuesday=$_POST['tuesday'];
     $wednesday=$_POST['wednesday'];
     $thursday=$_POST['thursday'];
     $friday=$_POST['friday'];
+
+    if(pwdMatch($newPassword, $newPassword2)!==false)
+    {
+        header("location: doctorRegistration.php?error=pwdMismatch");
+        exit();
+    }
+    if(!empty($end_date)){
+        if(checkDates($start_date, $end_date)!==false)
+        {
+            header("location: doctorRegistration.php?error=dateError");
+            exit();
+        }
+    }
+    
+    if(checkSpecialization($speciality_list)!==false)
+    {
+        header("location: doctorRegistration.php?error=specializationEmpty");
+        exit();
+    }
+    if(checkSchedule($monday, $tuesday, $wednesday, $thursday, $friday)!==false)
+    {
+        header("location: doctorRegistration.php?error=scheduleError");
+        exit();
+    }
+    // updateBasicInfo($con,$id, $first_name, $surname,$personal_statement, $active_since);
+    // updatePassword($con, $email,$newPassword);
+    // insertWorkSchedule($con, $id, $monday, $tuesday, $wednesday, $thursday, $friday);
+    // insertQualifications($con, $id, $quaification_name, $institude_name, $procurementDate);
+    // insertSpecializations($con, $id, $speciality_list);
+    // insertAffiliation($con, $id, $hospital_name, $hospital_city, $hospital_country,$start_date, $end_date);
+    completeRegistration($con, $id, $email, $first_name, $surname, $personal_statement,$active_since, $newPassword, $quaification_name, $institute_name, $procurementDate, $speciality_list, $hospital_name, $hospital_city, $hospital_country,$start_date, $end_date, $monday, $tuesday, $wednesday, $thursday, $friday);
     
 
 
-
+    header("location: logout.php");
+    exit();
 }
 ?>
 <!DOCTYPE html>
@@ -57,6 +96,7 @@ if(isset($_POST['regsiterDoctor']))
         $user_data=$_SESSION['user_data'];
         $fname=$user_data['first_name'];
         $sname=$user_data['last_name'];
+        $_SESSION['doc_id']=$user_data['doctor_id'];
         echo"<p>Email: ".$user_data['email_address']."</p>";
         echo "<label for=\"fname\">First Name: </label>";
         echo "<input id=\"fname\" type=\"text\" value=\"".$fname."\" name=\"fname\">";
@@ -67,16 +107,16 @@ if(isset($_POST['regsiterDoctor']))
         <p>The personal statement is basically a formal introduction. It helps give patients an idea of your background</p>
         
         <label for="personal_statment">Personal Statement</label>
-        <textarea id="personal_statment" name="pStatement" rows="20" cols="100" required></textarea>
+        <textarea id="personal_statment" name="pStatement" rows="10" cols="100" required></textarea>
         <p>The active since field refers to the year in which you began practicing medicine.</p>
         <label for="active_since">Active since</label>
         <input id="active_since" type="date" name="active_since_date" required>
         <h2>Account Information</h2>
         <p>Please change your default password</p>
         <label for="password">Password</label>
-        <input id="password" name="newpassword"type="password" placeholder="Password" required>
+        <input id="password" name="newpassword"type="password" placeholder="Password" required minlength="5" maxlength="20">
         <label for="password2">Please enter password again.</label>
-        <input id="password2" name="newpassword2" type="password" placeholder="Password" required>
+        <input id="password2" name="newpassword2" type="password" placeholder="Password" required minlength="5" maxlength="20">
         <h2>Medical Experience Information</h2>
         <p>This section is for filling out information regarding your medical experience to help patients better understand what you do.</p>
         <h3>Qualifications</h3>
@@ -100,7 +140,7 @@ if(isset($_POST['regsiterDoctor']))
                         $id=$row['id'];
                         $special_option=$row['specialization_name'];
                         echo "
-                        <input id=\"specialty".$id."\" type=\"checkbox\" name=\"specialty\" value=\"".$id."\">
+                        <input id=\"specialty".$id."\" type=\"checkbox\" name=\"specialty[]\" value=\"".$id."\">
                         <label for=\"specialty".$id."\">".$special_option."</label>
                         <br>
                         ";
@@ -110,9 +150,9 @@ if(isset($_POST['regsiterDoctor']))
         </fieldset>
         <h3>Hospital affiliation</h3>
         <p>Input information regarding your hospital affiliations</p>
-        <label for="hospital_name">Hospital name</label><input id="hospital_name" type="text" name="hospital_name">
-        <label for="hospital_city">Hospital city</label><input id="hospital_city" type="text" name="hospital_city">
-        <label for="hospital_country">Hospital country</label><input id="hospital_country"type="text" name="hospital_country">
+        <label for="hospital_name">Hospital name</label><input id="hospital_name" type="text" name="hospital_name" required>
+        <label for="hospital_city">Hospital city</label><input id="hospital_city" type="text" name="hospital_city" required>
+        <label for="hospital_country">Hospital country</label><input id="hospital_country"type="text" name="hospital_country" required>
         <label for="start_date">Start date</label>
         <input id="start_date" type="date" name="start_date" required>
         <label for="end_date">End date</label><input id="end_date"type="date" name="end_date">
@@ -131,7 +171,7 @@ if(isset($_POST['regsiterDoctor']))
                     <td>Monday</td>
                     <td>
                         <input id="monday1" type="radio" name="monday" value="1">
-                        <label for="monday">Morning</label>
+                        <label for="monday1">Morning</label>
                         <input id="monday2" type="radio" name="monday" value="2">
                         <label for="monday2">Evening</label>
                         <input id="monday3" type="radio" name="monday" value="3">
@@ -144,7 +184,7 @@ if(isset($_POST['regsiterDoctor']))
                     <td>Tuesday</td>
                     <td>
                         <input id="tuesday1" type="radio" name="tuesday" value="1">
-                        <label for="tuesday">Morning</label>
+                        <label for="tuesday1">Morning</label>
                         <input id="tuesday2" type="radio" name="tuesday" value="2">
                         <label for="tuesday2">Evening</label>
                         <input id="tuesday3" type="radio" name="tuesday" value="3">
@@ -157,7 +197,7 @@ if(isset($_POST['regsiterDoctor']))
                     <td>Wednesday</td>
                     <td>
                         <input id="wednesday1" type="radio" name="wednesday" value="1">
-                        <label for="wednesday">Morning</label>
+                        <label for="wednesday1">Morning</label>
                         <input id="wednesday2" type="radio" name="wednesday" value="2">
                         <label for="wednesday2">Evening</label>
                         <input id="wednesday3" type="radio" name="wednesday" value="3">
@@ -170,7 +210,7 @@ if(isset($_POST['regsiterDoctor']))
                     <td>Thursday</td>
                     <td>
                         <input id="thursday1" type="radio" name="thursday" value="1">
-                        <label for="thursday">Morning</label>
+                        <label for="thursday1">Morning</label>
                         <input id="thursday2" type="radio" name="thursday" value="2">
                         <label for="thursday2">Evening</label>
                         <input id="thursday3" type="radio" name="thursday" value="3">
@@ -183,7 +223,7 @@ if(isset($_POST['regsiterDoctor']))
                     <td>Friday</td>
                     <td>
                         <input id="friday1" type="radio" name="friday" value="1">
-                        <label for="friday">Morning</label>
+                        <label for="friday1">Morning</label>
                         <input id="friday2" type="radio" name="friday" value="2">
                         <label for="friday2">Evening</label>
                         <input id="friday3" type="radio" name="friday" value="3">

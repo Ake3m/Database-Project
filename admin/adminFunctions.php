@@ -49,7 +49,8 @@ function loginAdmin($con, $user, $password)
 function addDoctor($con, $doc_email, $doc_firstname, $doc_surname){
     $defaultpassword="123456789";
     $accountType="D";
-    $addquery="INSERT INTO login_info(email_address, password, account_type) VALUES(?,?,?);";
+    $activated="N";
+    $addquery="INSERT INTO login_info(email_address, password, account_type, activated) VALUES(?,?,?,?);";
     $addDocInfo="INSERT INTO doctor_information(first_name, last_name, email_address) VALUES(?,?,?);";
     $stmt=mysqli_stmt_init($con);
     $stmt2=mysqli_stmt_init($con);
@@ -62,7 +63,7 @@ function addDoctor($con, $doc_email, $doc_firstname, $doc_surname){
         exit();
     }
     $hashedPassword=password_hash($defaultpassword, PASSWORD_DEFAULT);
-    mysqli_stmt_bind_param($stmt, "sss", $doc_email, $hashedPassword, $accountType);
+    mysqli_stmt_bind_param($stmt, "ssss", $doc_email, $hashedPassword, $accountType, $activated);
     mysqli_stmt_bind_param($stmt2, "sss", $doc_firstname, $doc_surname, $doc_email);
 
     mysqli_stmt_execute($stmt);

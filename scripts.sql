@@ -154,3 +154,34 @@ SET GLOBAL FOREIGN_KEY_CHECKS=0;
 
 SET FOREIGN_KEY_CHECKS = 1;
 SET GLOBAL FOREIGN_KEY_CHECKS=1;
+
+
+CREATE TABLE shift_duration(
+    shift_id int  auto_increment primary key,
+    shift_name varchar(50) not null, 
+    start_time time not null,
+    end_time time not null
+)
+
+CREATE TABLE works(
+    id int auto_increment primary key,
+    doctor_id int not null,
+    day_of_week varchar(50) not null,
+    shift_id int not null,
+    foreign key(doctor_id) references doctor_information(doctor_id),
+    foreign key(shift_id) references shift_duration(shift_id)
+);
+
+--altering foreign keys
+alter table doctor_specialization drop foreign key doctor_specialization_ibfk_1;
+alter table doctor_specialization add foreign key(doctor_id) references doctor_information(doctor_id) on delete cascade;
+
+alter table hospital_affiliation drop foreign key hospital_affiliation_ibfk_1;
+alter table hospital_affiliation add foreign key(doctor_id) references doctor_information(doctor_id) on delete cascade;
+
+alter table qualification drop foreign key qualification_ibfk_1;
+alter table qualification add foreign key(doctor_id) references doctor_information(doctor_id) on delete cascade;
+
+alter table works drop foreign key works_ibfk_1;
+alter table works add foreign key(doctor_id) references doctor_information(doctor_id) on delete cascade;
+

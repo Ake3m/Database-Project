@@ -131,7 +131,7 @@ function loginUser($con, $email, $password)
 
     if($emailExists===false)
     {
-        header("location: login.php?error=wronglogin");
+        header("location: login.php?error=wronglogin1");
         exit();
     }
     $passwordHashed=$emailExists['password'];
@@ -147,6 +147,7 @@ function loginUser($con, $email, $password)
         session_start();
         $_SESSION['email']= $emailExists['email_address'];
         $_SESSION['accountType']=$emailExists['account_type'];
+        $_SESSION['activated']=$emailExists['activated'];
         header("location: index.php");
         exit();
     }

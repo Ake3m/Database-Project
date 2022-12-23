@@ -48,6 +48,9 @@ if (isset($_POST['login'])) {
                 case "wronglogin":
                     echo "<p>Information incorrect</p>";
                     break;
+                case "wronglogin1":
+                    echo "<p>Information incorrect--</p>";
+                    break;
             }
         }
         ?>
