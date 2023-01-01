@@ -23,8 +23,12 @@
 		<main>
 		<h1>Welcome to Brave Heart Clinic's Website</h1>
 		<?php
-			echo "</p>Welcome to the website".$user_data['first_name']."I hope you find what you're looking for</p>";
+			echo "</p>Welcome, ".$user_data['first_name']."</p>";
 		?>
+		<h2>Appointment details</h2>
+		<h3>Upcoming appointments<h3>
+		<h3>Past appointments</h3>
+
 		
 		</main>
 		<footer></footer>

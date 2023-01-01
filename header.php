@@ -23,14 +23,13 @@ session_start();
                     if(isset($_SESSION['accountType']) && $_SESSION['accountType']==='R')
                     {
                         echo "<li><a href=\"profile.php\">Profile</a></li>";
-                        echo "<li><a href=\"#\">Make Appointment</a></li>";
+                        echo "<li><a href=\"makeAppointment.php\">Make Appointment</a></li>";
                         echo "<li><a href=\"logout.php\">Logout</a></li>";
                     }
                     else if(isset($_SESSION['accountType']) && $_SESSION['accountType']==='D')
                     {
                         echo "<li><a href=\"profile.php\">Profile</a></li>";
                         echo "<li><a href=\"#\">View Appointments</a></li>";
-                        echo "<li><a href=\"#\">Alter Schedule</a></li>";
                         echo "<li><a href=\"logout.php\">Logout</a></li>";
                     }
                 }
