@@ -50,7 +50,7 @@ include_once("header.php");
         else{
             $doc_specialization=$_GET['specialization'];
             // $doctorQuery="SELECT * FROM doctor_information AS di, doctor_specialization AS ds WHERE di.doctor_id=ds.doctor_id AND ds.specialization_id=".$doc_specialization.";";
-            $doctorQuery="SELECT doctor_information.first_name, doctor_information.last_name, doctor_specialization.specialization_id, works.day_of_week, shift_duration.shift_name, shift_duration.start_time, shift_duration.end_time
+            $doctorQuery="SELECT doctor_information.doctor_id, doctor_information.first_name, doctor_information.last_name, doctor_specialization.specialization_id, works.day_of_week, shift_duration.shift_name, shift_duration.start_time, shift_duration.end_time
             FROM doctor_information
             LEFT JOIN doctor_specialization ON doctor_information.doctor_id=doctor_specialization.doctor_id LEFT JOIN works ON  doctor_information.doctor_id=works.doctor_id LEFT JOIN shift_duration ON works.shift_id=shift_duration.shift_id
             WHERE shift_duration.start_time IS NOT NULL AND shift_duration.end_time IS NOT NULL AND doctor_specialization.specialization_id =".$doc_specialization." AND works.day_of_week=\"".$day."\";";
@@ -71,7 +71,7 @@ include_once("header.php");
                     echo"<tr><td>".$row['first_name']." ".$row['last_name']."</td>";
                     echo "<td>".$row['day_of_week'].", ".$row['start_time']." - ".$row['end_time']."</td>";
                     echo "<td>
-                    <button>View Profile</button><button>Book Appoinment</button>
+                    <button><a href=\"viewDoctorProfile.php?id=".$row['doctor_id']."\" target=_blank\">View Profile</a></button><button>Book Appoinment</button>
                     </td></tr>";
                 }
                 echo"
