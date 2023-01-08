@@ -190,13 +190,17 @@ alter table works add foreign key(doctor_id) references doctor_information(docto
 --create appointment table
 
 CREATE TABLE appointment(
+    appointment_id int auto_increment,
     appointment_date date,
     patient_id int,
     doctor_id int,
     consultation_number int,
     appointment_status_id int not null,
+    start_time time not null,
+    end_time time not null,
     FOREIGN KEY(appointment_status_id) REFERENCES appointment_status(id),
     FOREIGN KEY(patient_id) REFERENCES user_info(uid),
     FOREIGN KEY(doctor_id) REFERENCES doctor_information(doctor_id),
-    CONSTRAINT PK_appointment PRIMARY KEY(appointment_date, patient_id, doctor_id)
+    CONSTRAINT PK_appointment PRIMARY KEY(appointment_date, doctor_id, consultation_number);
 );
+

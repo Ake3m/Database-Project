@@ -71,7 +71,8 @@ include_once("header.php");
                     echo"<tr><td>".$row['first_name']." ".$row['last_name']."</td>";
                     echo "<td>".$row['day_of_week'].", ".$row['start_time']." - ".$row['end_time']."</td>";
                     echo "<td>
-                    <button><a href=\"viewDoctorProfile.php?id=".$row['doctor_id']."\" target=_blank\">View Profile</a></button><button>Book Appoinment</button>
+                    <button><a href=\"viewDoctorProfile.php?id=".$row['doctor_id']."\" target=_blank\">View Profile</a></button>
+                    <button><a href=\"confirmAppointment.php?date=".$date."&id=".$row['doctor_id']."&day=".$day."&start_time=".$row['start_time']."&end_time=".$row['end_time']."&first_name=".$row['first_name']."&last_name=".$row['last_name']."\">Book Appoinment</a></button>
                     </td></tr>";
                 }
                 echo"
