@@ -185,3 +185,18 @@ alter table qualification add foreign key(doctor_id) references doctor_informati
 alter table works drop foreign key works_ibfk_1;
 alter table works add foreign key(doctor_id) references doctor_information(doctor_id) on delete cascade;
 
+
+
+--create appointment table
+
+CREATE TABLE appointment(
+    appointment_date date,
+    patient_id int,
+    doctor_id int,
+    consultation_number int,
+    appointment_status_id int not null,
+    FOREIGN KEY(appointment_status_id) REFERENCES appointment_status(id),
+    FOREIGN KEY(patient_id) REFERENCES user_info(uid),
+    FOREIGN KEY(doctor_id) REFERENCES doctor_information(doctor_id),
+    CONSTRAINT PK_appointment PRIMARY KEY(appointment_date, patient_id, doctor_id)
+);
