@@ -58,7 +58,7 @@
 				<td>".$row['first_name']." ".$row['last_name']."</td>
 				<td>".$row['start_time']." to ".$row['end_time']."</td>
 				<td>".$row['consultation_number']."</td>
-				<td><button><a href=\"confirmCancellation.php?date=".$row['appointment_date']."&doctor_id=".$row['doctor_id']."&onsultation_number=".$row['consultation_number']."\">Cancel</a></button></td>
+				<td><button><a href=\"confirmCancellation.php?date=".$row['appointment_date']."&doctor_id=".$row['doctor_id']."&consultation_number=".$row['consultation_number']."&last_name=".$row['last_name']."\">Cancel</a></button></td>
 				</tr>";
 			}
 			echo"</tbody>
