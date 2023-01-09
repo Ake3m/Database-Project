@@ -46,8 +46,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Update Information</title>
+    <link rel="stylesheet" href="./styles/main.css">
 </head>
 <body>
+    <main id="box">
     <h1>Update Information</h1>
     <p>Update the informaton in the textboxes below and then once satisfied, press the submit button</p>
     <p>Once you submit, you will be signed out and propmted to login once more<p>
@@ -85,6 +87,6 @@
             echo "<input type=\"submit\" name=\"cancel\" value=\"Cancel\"/>";
             echo"</form>";
         ?>
-        
+    </main>
 </body>
 </html>

@@ -16,10 +16,10 @@
 <html>
 	<head>
 		<title>Brave Heart Clinic</title>
+		<link rel="stylesheet" href="./styles/main.css">
 	</head>
 	<body>
-	
-		<main>
+		<main id="box">
 		<h1>Welcome to Brave Heart Clinic's Website</h1>
 		<?php
 			if($_SESSION['accountType']==='D')

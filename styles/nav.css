@@ -1,0 +1,46 @@
+
+body{
+    margin:0px;
+    font-family: Roboto, sans-serif;
+}
+header p{
+    font-weight: 800;
+}
+header li,a,button {
+font-family: Roboto, sans-serif;
+font-size: 15px;
+text-decoration: none;
+color:white;
+}
+
+header{
+    background-color:#60a9ff;
+    margin:0px;
+    display:flex;
+    justify-content:space-between;
+    align-items: center;
+    padding:15px 10%;
+}
+
+.black{
+    color:black;
+}
+.white{
+    color:white;
+}
+
+.nav_links{
+    list-style:none;
+}
+.nav_links li{
+    display:inline-block;
+    padding:0px 20px;
+    
+}
+.nav_link li a{
+    transition: all 0.3s ease 0s;
+}
+.nav_link li a:hover{
+    
+    color:#60a9ff;
+}

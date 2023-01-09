@@ -21,14 +21,17 @@ if (isset($_POST['login'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet"href="./styles/intro.css" >
     <title>Login</title>
 </head>
 
 <body>
     <div id="box">
-        <h1>Login</h1>
+        <h1 class="box-title">Login</h1>
         <form method="post">
-
             <p>
                 <label for="login_email">Email Address</label>
                 <input id="login_email" type="text" name="email" requied placeholder="Enter your email address">
@@ -41,20 +44,19 @@ if (isset($_POST['login'])) {
             <a href="signup.php">Sign up</a>
         </form>
     </div>
-    <div>
         <?php
         if (isset($_GET['error'])) {
+            echo"<div class=\"message\">";
             switch ($_GET['error']) {
                 case "wronglogin":
-                    echo "<p>Information incorrect</p>";
+                    echo "<p>Information incorrect</p></div>";
                     break;
                 case "wronglogin1":
-                    echo "<p>Information incorrect--</p>";
+                    echo "<p>Information incorrect--</p></div>";
                     break;
             }
         }
         ?>
-    </div>
 </body>
 
 </html>

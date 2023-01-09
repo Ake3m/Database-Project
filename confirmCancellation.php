@@ -32,8 +32,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Appointment Cancellation</title>
+    <link rel="stylesheet" href="./styles/main.css">
 </head>
 <body>
+    <main id="box">
     <h1>Appointment Cancellation</h1>
     <img src="./img/sad_doc.jpg"/>
     <h2>Appointment Details</h2>
@@ -45,6 +47,6 @@
         <input type="submit" value="Yes" name="yes"/>
         <input type="submit" value="No" name="no"/>
     </form>
-    
+</main>
 </body>
 </html>

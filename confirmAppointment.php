@@ -53,8 +53,10 @@ if(isset($_POST['confirm']))
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Appointment Details</title>
+    <link rel="stylesheet" href="./styles/main.css">
 </head>
 <body>
+    <main id="box">
     <h1>Confirm Appointment Details</h1>
     <p>Here is a summary of your appointment. In order to confirm, please press the confirm button below. After confirming the appointment, you'll be given a consultancy number,which represents the order in which the doctor will be seeing patients on that day.There may be cases where patients do not make it before their number is called, they can still see the doctor, but they would have to wait until all the other numbers have been called. Therefore, please be on time and keep in mind the doctor's start time. All payment will be handled on site. Thank you for your patronage!</p>
     <?php
@@ -65,6 +67,6 @@ if(isset($_POST['confirm']))
     <form method="post">
         <input type="submit" value="Confirm" name="confirm"/>
     </form>
-
+</main>
 </body>
 </html>

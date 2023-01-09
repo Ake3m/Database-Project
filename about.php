@@ -10,8 +10,11 @@ include_once('functions.php');
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us</title>
+    <link rel="stylesheet" href="./styles/main.css">
+    
 </head>
 <body>
+    <section id="box">
     <h1>About Us</h1>
     <p>The Brave Heart Clinic has been providing care and treatment for the sickest in our community since 2010</p>
     <h2>About the BHC</h2>
@@ -21,5 +24,6 @@ include_once('functions.php');
     <h2>Doctors</h2>
     <p>We have a number of doctors and hospitals that we are in partnership with in order to provide the best possible servce to our patients.</p>
     <p>Doctors with many different specializations are available for appointments and they will take their time to properly diagnose you and get you the best assistance possible.</p>
+</section>
 </body>
 </html>

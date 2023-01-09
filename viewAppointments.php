@@ -10,8 +10,10 @@ include_once("header.php");
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Appointments</title>
+    <link rel="stylesheet" href="./styles/main.css">
 </head>
 <body>
+    <main id="box">
     <h1>View Appointments</h1>
     <p>Select the date you would like to check</p>
     <form method="post">
@@ -59,6 +61,6 @@ include_once("header.php");
 
         }
     ?>
-
+</main>
 </body>
 </html>

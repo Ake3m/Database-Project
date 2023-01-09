@@ -48,12 +48,14 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign up</title>
+    <link rel="stylesheet" href="./styles/intro.css">
     <!-- <script src="functions.js"></script> -->
 </head>
 
 <body>
-    <h1>Sign Up</h1>
+    
     <div id="box">
+    <h1>Sign Up</h1>    
         <form name="signupform" method="post" onsubmit="validateInput()">
             <p>
                 <label for="fname">First Name<span>*</span></label>
@@ -97,24 +99,24 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             <a href="login.php">Login</a>
         </form>
     </div>
-    <div>
         <?php
         if (isset($_GET['error'])) {
+            echo "<div class=\"message\">";
             switch ($_GET['error']) {
                 case "emptyinput":
-                    echo "<p>Please fill in all fields</p>";
+                    echo "<p>Please fill in all fields</p></div>";
                     break;
                 case "invalidemail":
-                    echo "<p>Please Enter a valid email</p>";
+                    echo "<p>Please Enter a valid email</p></div>";
                     break;
                 case "passwordsmismatch":
-                    echo "<p> Please ensure both passwords are the same</p>";
+                    echo "<p> Please ensure both passwords are the same</p></div>";
                     break;
                 case "emailtaken":
-                    echo "<p>Email address already in use</p>";
+                    echo "<p>Email address already in use</p></div>";
                     break;
                 case "stmtfailed":
-                    echo "<p>Something went wrong. Please try again.</p>";
+                    echo "<p>Something went wrong. Please try again.</p></div>";
                     break;
                 case "none":
                     header("location: login.php");
@@ -123,7 +125,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             }
         }
         ?>
-    </div>
 </body>
 
 </html>

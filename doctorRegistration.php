@@ -84,8 +84,10 @@ if(isset($_POST['registerDoctor']))
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/registrationstyle.css"/>
     <title>Complete Registration</title>
+    <link rel="stylesheet" href="./styles/main.css">
 </head>
 <body>
+    <main id="box">
     <h1>Complete the registration</h1>
     <p>In order to be visible to patients for booking, you must complete the registration process.</p>
     <form method="post">
@@ -238,5 +240,6 @@ if(isset($_POST['registerDoctor']))
         <p>Please verify all the information before submitting</p>
         <input type="submit" name="registerDoctor" value="Submit">
     </form>
+            </main>
 </body>
 </html>

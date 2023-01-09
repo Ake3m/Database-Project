@@ -11,8 +11,10 @@ include_once("header.php");
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Doctor Profile</title>
+    <link rel="stylesheet" href="./styles/main.css">
 </head>
 <body>
+    <main id="box">
     <?php
     $doctorID=$_SESSION['user_data']['doctor_id'];
         $getProfileInformation="SELECT doctor_information.doctor_id,doctor_information.first_name, doctor_information.last_name, doctor_information.professional_statement, doctor_information.active_since, hospital_affiliation.hospital_name, hospital_affiliation.city, hospital_affiliation.country, hospital_affiliation.start_date, hospital_affiliation.end_date 
@@ -89,5 +91,6 @@ include_once("header.php");
     <p>To change any of the above, please cotact your system administrator</p>
     <h2>Change password</p>
     <button><a href="updatePassword.php">Update password</a></button>
+    </main>
 </body>
 </html>

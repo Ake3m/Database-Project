@@ -10,8 +10,10 @@ include_once("header.php");
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Make Appointment</title>
+    <link rel="stylesheet" href="./styles/main.css">
 </head>
 <body>
+    <main id="box">
     <h1>Make Appointment</h1>
     <form method="get">
         <?php
@@ -35,7 +37,7 @@ include_once("header.php");
             echo "</fieldset>"
         ?>
         <input type="submit" value="Search" name="search"/>
-        <input type="Reset" value="Clear" name="reset"/>
+        <input type="reset" value="Clear" name="reset"/>
     </form>
 
     <?php
@@ -84,6 +86,6 @@ include_once("header.php");
         
     }
     ?>
-
+</main>
 </body>
 </html>
