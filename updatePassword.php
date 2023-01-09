@@ -14,8 +14,15 @@ if(isset($_POST['updatePass']))
 }
 if(isset($_POST['cancel']))
 {
-    header("location: profile.php");
-    exit();
+    if($_SESSION['accountType']==='D'){
+        header("location: doctorProfile.php");
+        exit();
+    }
+    else{
+        header("location: profile.php");
+        exit();
+    }
+    
 }
 ?>
 <!DOCTYPE html>

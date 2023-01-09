@@ -28,8 +28,8 @@ session_start();
                     }
                     else if(isset($_SESSION['accountType']) && $_SESSION['accountType']==='D')
                     {
-                        echo "<li><a href=\"profile.php\">Profile</a></li>";
-                        echo "<li><a href=\"#\">View Appointments</a></li>";
+                        echo "<li><a href=\"doctorProfile.php\">Profile</a></li>";
+                        echo "<li><a href=\"viewAppointments.php\">View Appointments</a></li>";
                         echo "<li><a href=\"logout.php\">Logout</a></li>";
                     }
                 }
