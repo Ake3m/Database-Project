@@ -19,6 +19,13 @@
     {
         
         header("location: updateInformation.php");
+        exit();
+    }
+
+    if(isset($_POST['password']))
+    {
+        header("location: updatePassword.php");
+        exit();
     }
 ?>
 <!DOCTYPE html>

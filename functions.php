@@ -153,6 +153,51 @@ function loginUser($con, $email, $password)
     }
 }
 
-
+function updatePassword($con,$email, $currPass, $newPass,$newPass2)
+{
+    $getpasswordQuery="SELECT password FROM login_info WHERE email_address=\"".$email."\"";
+    $queryResult=mysqli_query($con, $getpasswordQuery);
+    if($queryResult && mysqli_num_rows($queryResult))
+    {
+        $passwordResult=mysqli_fetch_assoc($queryResult);
+        $hashedPw=$passwordResult['password'];
+        //checks if current password matches hash
+        $chkPass=password_verify($currPass,$hashedPw);
+        if($chkPass===false)
+        {
+            header("location: updatePassword.php?error=".$hashedPw."");
+            exit();
+        }
+        else if($chkPass===true)
+        {
+            //compare the 2 new passwords to make sure they match
+            if(pwdMatch($newPass, $newPass2)===false)
+            {
+                $newHash=password_hash($newPass, PASSWORD_DEFAULT);
+                $updatePassQuery="UPDATE login_info SET password=\"".$newHash."\" WHERE email_address=\"".$email."\";";
+                if(mysqli_query($con, $updatePassQuery))
+                {
+                    header("location: logout.php");
+                    exit();
+                }
+                else{
+                    header("updatePassword.php?error=updateError");
+                    exit();
+                }
+            }
+            else
+            {
+                header("updatePassword.php?error=passwordmismatch");
+                
+            }
+        }
+        
+        
+    }
+    else{
+        header("updatePassword.php?error=queryfailed");
+        exit();
+    }
+}
 
 ?>
