@@ -26,9 +26,9 @@ include_once("header.php");
         {
             $query_date=$_POST['query_date'];
             
-            $getAppointments="SELECT * FROM appointment INNER JOIN user_info ON patient_id=uid WHERE doctor_id=".$_SESSION['user_data']['doctor_id']." ORDER BY consultation_number";
+            $getAppointments="SELECT * FROM appointment INNER JOIN user_info ON patient_id=uid WHERE doctor_id=".$_SESSION['user_data']['doctor_id']." AND appointment_date=\"".$query_date."\"ORDER BY consultation_number";
             $result=mysqli_query($con,$getAppointments);
-            if($result && mysqli_num_rows($result))
+            if(mysqli_num_rows($result))
             {
                 echo "<table>
                 <thead>
@@ -57,6 +57,9 @@ include_once("header.php");
                 echo"
                 </tbody>
                 </tabe>";
+            }
+            else{
+                echo "<p>No appointments for this day</p>";
             }
 
         }
