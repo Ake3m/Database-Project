@@ -1,5 +1,6 @@
 <?php
 include_once("adminHeader.php");
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +12,7 @@ include_once("adminHeader.php");
     <title>Admin Panel</title>
 </head>
 <body>
-    
+    <main>
     <h1>Control Panel</h1>
     <p>The admin panel is used to make modifications in the system. This means that changes made here can be catestrophic to the system and may cause things to brea. Please be sure of all the changes you make here. Thank you. </p>
     <div id="config_choices">
@@ -24,6 +25,8 @@ include_once("adminHeader.php");
         <a  class="box" href="manageSpecialization.php"> 
                 Manage specilizaions
         </a>
+        <a class="box" href="#">Manage appointments</a>
     </div>
+</main>
 </body>
 </html>
