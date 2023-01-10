@@ -25,7 +25,7 @@ include_once("adminHeader.php");
         <a href="manageSpecialization.php"> 
                 Manage specilizaions
         </a>
-        <a href="#">Manage appointments</a>
+        <a href="manageAppointment.php">Manage appointments</a>
     </div>
 </main>
 </body>
