@@ -186,7 +186,15 @@ alter table works drop foreign key works_ibfk_1;
 alter table works add foreign key(doctor_id) references doctor_information(doctor_id) on delete cascade;
 
 --new constraints for customer
+alter table user_info drop foreign key user_info_ibfk_1;
+alter table user_info add foreign key(email_address) references login_info(email_address) on delete cascade;
 
+
+alter table appointment drop foreig key appointment_ibfk_2;
+alter table appointment add foreign key(patient_id) references user_info(uid) on delete cascade;
+
+alter table appointment drop foreig key appointment_ibfk_3
+alter table appointment add foreign key(doctor_id) references doctor_information(doctor_id) on delete cascade;
 
 
 

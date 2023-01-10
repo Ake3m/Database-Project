@@ -89,4 +89,21 @@ function addSpecialization($con, $specialization_name)
     }
 }
 
+function changeUserPassword($con,$email, $pw1, $pw2)
+{
+    if($pw1!==$pw2)
+    {
+        header("location: adminChangePassword?error=passwordmismatch");
+        exit();
+    }
+    $hashedPw=password_hash($pw1, PASSWORD_DEFAULT);
+
+    $updatePwdQuery="UPDATE login_info SET password=\"".$hashedPw."\";";
+    if(mysqli_query($con, $updatePwdQuery))
+    {
+        header("location: adminpanel.php?error=none");
+        exit();
+    }
+}
+
 ?>

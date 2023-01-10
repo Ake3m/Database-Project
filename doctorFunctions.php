@@ -172,5 +172,27 @@ function completeRegistration($con, $id,$email, $fname, $sname, $pStatement, $ac
     exit();
 }
 
+function editInformation($con, $id, $fname, $sname, $pStatement, $active_since, $qname, $iname, $pdate, $hname, $hcity, $hcountry, $start_date, $end_date)
+{
+    $updateBasicQuery="UPDATE doctor_information SET first_name= ?, last_name= ?, professional_statement= ?, active_since=? WHERE doctor_id=?;";
+    $qualificationQuery="UPDATE qualification SET qualification_name= ?, institute_name=?, procurement_date=? WHERE doctor_id=?;";
+    $affiliationQuery="UPDATE  hospital_affiliation SET hospital_name= ?, city=?,country=?, start_date =?, end_date=? WHERE doctor_id=?";
+    $basicInfoStmt=mysqli_stmt_init($con);
+    $qualificationStmt=mysqli_stmt_init($con);
+    $affiliationStmt=mysqli_stmt_init($con);
+    if(!mysqli_stmt_prepare($basicInfoStmt, $updateBasicQuery) || !mysqli_stmt_prepare($qualificationStmt,$qualificationQuery) || !mysqli_stmt_prepare($affiliationStmt, $affiliationQuery))
+    {
+        header("location: doctorRegistration.php?error=stmtfailed");
+        exit();
+    }
+    mysqli_stmt_bind_param($basicInfoStmt, "ssssi", $fname, $sname, $pStatement, $active_since, $id);
+    mysqli_stmt_bind_param($qualificationStmt, "sssi", $qname, $iname, $pdate,$id);
+    mysqli_stmt_bind_param($affiliationStmt,"sssssi", $hname, $hcity, $hcountry, $start_date,$end_date,$id);
 
+    mysqli_stmt_execute($basicInfoStmt);
+    mysqli_stmt_execute($qualificationStmt);
+    mysqli_stmt_execute($affiliationStmt);
+    header("location:manageDoctor.php?error=none");
+    exit();
+}   
 ?>

@@ -117,7 +117,7 @@ if(isset($_POST['registerDoctor']))
         <h2>Medical Experience Information</h2>
         <p>This section is for filling out information regarding your medical experience to help patients better understand what you do.</p>
         <h3>Qualifications</h3>
-        <p>Please input your highest level qualification below. Other qualifications can be added after the registration process.</p>
+        <p>Please input your highest level qualification below.</p>
         <label for="qname">Name of Qualification</label>
         <input type="text" id="qname" name="qualification_name" required placeholder="Qualification">
         <label for="iname">Name of Institute</label>

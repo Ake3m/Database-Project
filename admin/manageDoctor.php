@@ -39,7 +39,7 @@ include_once("../connection.php");
                     echo"<td>**********</td>";
                     echo"<td>".$row['activated']."</td>";
                     echo "<td>
-                    <a href=\"#\"><button>Change password</button></a>
+                    <a href=\"adminChangePassword.php?email=".$row['email_address']."\"><button>Change password</button></a>
                     <a href=\"deleteAccount.php?email=".$row['email_address']."\"><button class=\"deleteBtn\">Delete User</button></a>
                     </td>";
                     echo"</tr>";
@@ -77,7 +77,7 @@ include_once("../connection.php");
                 echo"<td>".$row['professional_statement']."</td>";
                 echo"<td>".$row['active_since']."</td>";
                 echo"<td>".$row['email_address']."</td>";
-                echo"<td><a href=\"#\"><button>Edit</button></a></td>";
+                echo"<td><a href=\"editDoctorInfo.php?doctor_id=".$row['doctor_id']."\"><button>Edit</button></a></td>";
                 echo"</tr>";    
             }
         }
@@ -115,7 +115,7 @@ include_once("../connection.php");
                 echo"<td>".$row['country']."</td>";
                 echo"<td>".$row['start_date']."</td>";
                 echo"<td>".$row['end_date']."</td>";
-                echo"<td><a href=\"#\"><button>Edit</button></a></td>";
+                echo"<td><a href=\"editDoctorInfo.php?doctor_id=".$row['doctor_id']."\"><button>Edit</button></a></td>";
                 echo"</tr>";
             }
         }
@@ -149,7 +149,7 @@ include_once("../connection.php");
                 echo"<td>".$row['qualification_name']."</td>";
                 echo"<td>".$row['institute_name']."</td>";
                 echo"<td>".$row['procurement_date']."</td>";
-                echo"<td><a href=\"#\"><button>Edit</button></a></td>";
+                echo"<td><a href=\"editDoctorInfo.php?doctor_id=".$row['doctor_id']."\"><button>Edit</button></a></td>";
                 echo"</tr>";
             }
         }
@@ -157,7 +157,7 @@ include_once("../connection.php");
     </tbody>
     </table>
     <h2>Doctor Specialization Information</h2>
-    <a href="#"><button class="addBtn">Add Doctor Specialization</button></a>
+    <a href="addDoctorSpecialization.php"><button class="addBtn">Add Doctor Specialization</button></a>
     <table>
         <thead>
             <tr>
@@ -170,7 +170,7 @@ include_once("../connection.php");
         <tbody>
         <?php
 
-        $query="SELECT * FROM doctor_specialization INNER JOIN specialization ON doctor_specialization.specialization_id=specialization.id";
+        $query="SELECT * FROM doctor_specialization INNER JOIN specialization ON doctor_specialization.specialization_id=specialization.id ORDER BY doctor_id";
         $speializationResult=mysqli_query($con, $query);
         if($affiliationResult && mysqli_num_rows($speializationResult)>0)
         {

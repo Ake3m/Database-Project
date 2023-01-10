@@ -65,8 +65,14 @@ input[type=submit],input[type=reset]{
     margin: 5px;
     cursor:pointer;
 }
-
+label{
+    margin:20px;
+}
 input[type=password]{
+    display:block;
+    margin:0 auto;
+}
+input[type=text],textarea{
     display:block;
     margin:0 auto;
 }

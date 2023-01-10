@@ -9,13 +9,13 @@ if(isset($_POST['yes']))
     $deleteUser="DELETE from login_info WHERE email_address=\"".$email."\";";
     if(mysqli_query($con, $deleteUser))
     {
-        header("location: manageDoctor.php");
+        header("location: adminpanel.php");
         exit();
     }
 }
 if(isset($_POST['no']))
 {
-    header("location:manageDoctor.php");
+    header("location:adminpanel.php");
     exit();
 }
 ?>

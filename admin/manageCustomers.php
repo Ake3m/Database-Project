@@ -1,6 +1,7 @@
 <?php
 include_once("adminHeader.php");
 include_once("../connection.php");
+include_once("adminFunctions.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,8 +37,8 @@ include_once("../connection.php");
                     echo"<td>".$row['email_address']."</td>";
                     echo"<td>**********</td>";
                     echo "<td>
-                    <a href=\"#\"><button>Change password</button></a>
-                    <a href=\"#\"><button>Delete User</button></a>
+                    <a href=\"adminChangePassword.php?email=".$row['email_address']."\"><button>Change password</button></a>
+                    <a href=\"deleteAccount.php?email=".$row['email_address']."\"><button>Delete User</button></a>
                     </td>";
                     echo"</tr>";
                 }
