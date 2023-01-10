@@ -190,13 +190,15 @@ alter table user_info drop foreign key user_info_ibfk_1;
 alter table user_info add foreign key(email_address) references login_info(email_address) on delete cascade;
 
 
-alter table appointment drop foreig key appointment_ibfk_2;
+alter table appointment drop foreign key appointment_ibfk_2;
 alter table appointment add foreign key(patient_id) references user_info(uid) on delete cascade;
 
 alter table appointment drop foreig key appointment_ibfk_3
 alter table appointment add foreign key(doctor_id) references doctor_information(doctor_id) on delete cascade;
 
-
+--new constraints for dotor specialization
+alter table doctor_specialization drop foreign key doctor_specialization_ibfk_2;
+alter table doctor_specialization add foreign key(specialization_id) references specialization(id) on delete cascade;
 
 --create appointment table
 

@@ -14,13 +14,14 @@ include_once("adminHeader.php");
 <body>
     <main id="box">
     <h1>Specialization Management</h1>
-    <a href="addSpecialization.php">Add Specialization</a>
+    <a href="addSpecialization.php"><button class="addBtn">Add Specialization</button></a>
     <!-- ADD TABLE -->
     <table>
         <thead>
             <tr>
                 <th>id</th>
                 <th>Specialization Name</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -38,8 +39,8 @@ include_once("adminHeader.php");
                             <td>".$id."</td>
                             <td>".$specialization_name."</td>
                             <td>
-                                <button><a href=\"\">Edit</a></button>
-                                <button><a href=\"\">Delete</a></button>
+                                <a href=\"editSpecialization.php?id=".$id."&name=".$specialization_name."\"><button>Edit</button></a>
+                                <a href=\"\"><button class=\"deleteBtn\">Delete</button></a>
                             </td>
                         </tr>
 
