@@ -24,6 +24,12 @@ include_once('functions.php');
     <h2>Doctors</h2>
     <p>We have a number of doctors and hospitals that we are in partnership with in order to provide the best possible servce to our patients.</p>
     <p>Doctors with many different specializations are available for appointments and they will take their time to properly diagnose you and get you the best assistance possible.</p>
+    <h2>Opening Hours</h2>
+    <p>We open from Monday to Friday,from 9:00 AM to 5:00PM. We do not open on weekends. We apologize for any inconvenience caused.</p>
+    <h2>Contact Us</h2>
+    <p>We can be reached during our opening hours.</p>
+    <p>Email: braveheartclinic@gmal.com</p>
+    <p>Telephone: +866 912 045 034</p>
 </section>
 </body>
 </html>

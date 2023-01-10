@@ -31,7 +31,7 @@
 				$todays_date=date('Y-m-d');
 				echo "<h3>Upcoming Appointments</h3>";
 				$getAppointments="SELECT appointment_date,appointment_status_id, patient_id,appointment.doctor_id, appointment.doctor_id,consultation_number,start_time, end_time, user_info.first_name,user_info.last_name
-				FROM appointment INNER JOIN user_info ON appointment.patient_id=user_info.uid WHERE appointment.doctor_id=\"".$id."\" AND appointment_date>=".$todays_date." ORDER BY appointment_date;";
+				FROM appointment INNER JOIN user_info ON appointment.patient_id=user_info.uid WHERE appointment.doctor_id=\"".$id."\" AND appointment_date>=\"".$todays_date."\"AND appointment_status_id=1 ORDER BY appointment_date;";
 				$queryResult=mysqli_query($con, $getAppointments);
 				if(mysqli_num_rows($queryResult)===0)
 				{
@@ -72,7 +72,7 @@
 				}
 				echo "<h3>Past appointments</h3>";
 				$getPastAppointments="SELECT appointment_date, patient_id, appointment.doctor_id,consultation_number,start_time, end_time, user_info.first_name,user_info.last_name
-				FROM appointment INNER JOIN user_info ON appointment.patient_id=user_info.uid WHERE appointment.doctor_id=\"".$id."\" AND appointment_date <".$todays_date." ORDER BY appointment_date;";
+				FROM appointment INNER JOIN user_info ON appointment.patient_id=user_info.uid WHERE appointment.doctor_id=\"".$id."\" AND appointment_date <\"".$todays_date."\" AND appointment_status_id=1 ORDER BY appointment_date;";
 				$queryResult=mysqli_query($con, $getPastAppointments);
 				if(mysqli_num_rows($queryResult)===0)
 				{
@@ -93,15 +93,12 @@
 					echo"<tbody>";
 					while($row=mysqli_fetch_assoc($queryResult))
 					{
-						if($row['appointment_date']>=$todays_date)
-						{
-							echo"<tr>
-							<td>".$row['appointment_date']."</td>
-							<td>".$row['first_name']." ".$row['last_name']."</td>
-							<td>".$row['start_time']." to ".$row['end_time']."</td>
-							<td>".$row['consultation_number']."</td>
-							</tr>";
-						}
+						echo"<tr>
+						<td>".$row['appointment_date']."</td>
+						<td>".$row['first_name']." ".$row['last_name']."</td>
+						<td>".$row['start_time']." to ".$row['end_time']."</td>
+						<td>".$row['consultation_number']."</td>
+						</tr>";
 					}
 					echo"</tbody>
 					</table>";
@@ -115,7 +112,7 @@
 				$id=$user_data['uid'];
 				echo "<h3>Upcoming Appointments</h3>";
 				$getAppointments="SELECT appointment_date, patient_id,appointment.doctor_id, appointment.doctor_id,consultation_number,start_time, end_time, doctor_information.first_name,doctor_information.last_name
-				FROM appointment INNER JOIN doctor_information ON appointment.doctor_id=doctor_information.doctor_id WHERE patient_id=\"".$id."\" AND appointment_date>=".$todays_date." AND appointment_status_id=1 ORDER BY appointment_date;";
+				FROM appointment INNER JOIN doctor_information ON appointment.doctor_id=doctor_information.doctor_id WHERE patient_id=\"".$id."\" AND appointment_date>=\"".$todays_date."\" AND appointment_status_id=1 ORDER BY appointment_date;";
 				$queryResult=mysqli_query($con, $getAppointments);
 				if(mysqli_num_rows($queryResult)===0)
 				{
@@ -149,7 +146,7 @@
 				}
 				echo "<h3>Past appointments</h3>";
 				$getPastAppointments="SELECT appointment_date, patient_id, appointment.doctor_id,consultation_number,start_time, end_time, doctor_information.first_name,doctor_information.last_name
-				FROM appointment INNER JOIN doctor_information ON appointment.doctor_id=doctor_information.doctor_id WHERE patient_id=\"".$id."\" AND appointment_date <".$todays_date." ORDER BY appointment_date;";
+				FROM appointment INNER JOIN doctor_information ON appointment.doctor_id=doctor_information.doctor_id WHERE patient_id=\"".$id."\" AND appointment_date <\"".$todays_date."\" AND appointment_status_id=1 ORDER BY appointment_date;";
 				$queryResult=mysqli_query($con, $getPastAppointments);
 				if(mysqli_num_rows($queryResult)===0)
 				{
@@ -170,15 +167,12 @@
 					echo"<tbody>";
 					while($row=mysqli_fetch_assoc($queryResult))
 					{
-						if($row['appointment_date']>=$todays_date)
-						{
-							echo"<tr>
-							<td>".$row['appointment_date']."</td>
-							<td>".$row['first_name']." ".$row['last_name']."</td>
-							<td>".$row['start_time']." to ".$row['end_time']."</td>
-							<td>".$row['consultation_number']."</td>
-							</tr>";
-						}
+						echo"<tr>
+						<td>".$row['appointment_date']."</td>
+						<td>".$row['first_name']." ".$row['last_name']."</td>
+						<td>".$row['start_time']." to ".$row['end_time']."</td>
+						<td>".$row['consultation_number']."</td>
+						</tr>";
 					}
 					echo"</tbody>
 					</table>";
