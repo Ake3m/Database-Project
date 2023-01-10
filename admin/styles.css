@@ -68,7 +68,7 @@ input[type=submit],input[type=reset]{
 label{
     margin:20px;
 }
-input[type=password],input[type=date]{
+input[type=password],input[type=date],input[type=email]{
     display:block;
     margin:0 auto;
 }

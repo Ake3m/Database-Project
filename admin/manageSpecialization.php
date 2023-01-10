@@ -40,7 +40,7 @@ include_once("adminHeader.php");
                             <td>".$specialization_name."</td>
                             <td>
                                 <a href=\"editSpecialization.php?id=".$id."&name=".$specialization_name."\"><button>Edit</button></a>
-                                <a href=\"\"><button class=\"deleteBtn\">Delete</button></a>
+                                <a href=\"deleteSpecialization.php?id=".$id."&name=".$specialization_name."\"><button class=\"deleteBtn\">Delete</button></a>
                             </td>
                         </tr>
 
