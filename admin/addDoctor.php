@@ -21,8 +21,10 @@ if(isset($_POST['add']))
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Doctor</title>
+    <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
+    <main id="box">
     <h1>Doctor Registration</h1>
     <form method="post">
         <label for="doctor_email_address">Email Address</label>
@@ -33,5 +35,6 @@ if(isset($_POST['add']))
         <input type="text" required id="doctor_surname" name="doctor_sname" placeholder="Enter surname">
         <input type="submit" value="Add Doctor" name="add">
     </form>
+</main>
 </body>
 </html>

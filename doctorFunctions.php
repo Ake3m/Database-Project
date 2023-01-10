@@ -35,19 +35,17 @@ function updateBasicInfo($con,$id, $fname, $sname, $pStatement, $active_since)
     
 }
 
-function updatePassword($con,$email, $pw)
-{
-    $hashedPw=password_hash($pw, PASSWORD_DEFAULT);
-    $passwordUpdateQuery="UPDATE login_info SET password=? WHERE email_address=?;";
-    $stmt=mysqli_stmt_init($con);
-    if(!mysqli_stmt_prepae($stmt, $passwordUpdateQuery))
-    {
-        header("location: doctorRegistration.php?error=stmtfailed");
-        exit();
-    }
-    
-    
-}
+// function updatePassword($con,$email, $pw)
+// {
+//     $hashedPw=password_hash($pw, PASSWORD_DEFAULT);
+//     $passwordUpdateQuery="UPDATE login_info SET password=? WHERE email_address=?;";
+//     $stmt=mysqli_stmt_init($con);
+//     if(!mysqli_stmt_prepae($stmt, $passwordUpdateQuery))
+//     {
+//         header("location: doctorRegistration.php?error=stmtfailed");
+//         exit();
+//     }
+// }
 
 function insertQualifications($con,$doc_id, $qname, $iname, $pdate)
 {

@@ -9,8 +9,10 @@ include_once("adminHeader.php");
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Specialization Management</title>
+    <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
+    <main id="box">
     <h1>Specialization Management</h1>
     <a href="addSpecialization.php">Add Specialization</a>
     <!-- ADD TABLE -->
@@ -48,5 +50,6 @@ include_once("adminHeader.php");
         
         </tbody>
     </table>
+        </main>
 </body>
 </html>

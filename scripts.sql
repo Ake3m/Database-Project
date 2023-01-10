@@ -185,6 +185,9 @@ alter table qualification add foreign key(doctor_id) references doctor_informati
 alter table works drop foreign key works_ibfk_1;
 alter table works add foreign key(doctor_id) references doctor_information(doctor_id) on delete cascade;
 
+--new constraints for customer
+
+
 
 
 --create appointment table

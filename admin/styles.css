@@ -1,28 +1,99 @@
-#config_choices{
-    display:flex;
-    justify-content: center;
-    
+
+body{
+    background-color:#60a9ff;
+    font-family: Roboto, sans-serif;
 }
 
-.box{
-    display:block;
-    padding:20px;
-    margin: 10px;
-    width: 300px;
-    border-radius:20%;
-    background-color: dodgerblue;
-    font-size: 20px;
+
+#box{
     text-align: center;
-    line-height: 150px;
-    text-decoration: none;
+    background-color:white;
+    width:70%;
+    margin:0 auto;
+    padding:70px;
+    border-radius: 10px;
+    margin-bottom: 20px;
 }
 
+button{
+    color:white;
+    background-color: #60a9ff;
+    border-radius: 10%;
+    padding:5px;
+    border: 1px solid #60a9ff;
+    cursor:pointer;
+}   
+.deleteBtn{
+    background-color: rgb(249, 107, 107);
+    border: 1px solid #ff6060;
+}
 
 .addBtn{
-    display:block;
-    width:100px;
-    background-color:greenyellow;
-    text-decoration: none;
+    background-color: rgb(119, 249, 107);
+    border: 1px solid #44fb24;
+    color:black;
+    padding: 5px 20px;
+}
+
+table,td,th{
+    border:1px solid;
+    padding:5px;
+
+}
+table{
+    border-collapse:collapse;
+    margin:0 auto;
+    border-radius: 10%;
+    margin-top:10px;
+}
+th{
+    height:50px;
+}
+td{
+    text-align: center;
+}
+
+h1,h2,h3,h4,h5,h6
+{
+    text-decoration: underline #60a9ff;
+}
+input[type=submit],input[type=reset]{
+    border:2px solid #60a9ff;
     padding: 10px;
-    text-align:center;
+    background-color: white;
+    border-radius: 30%;
+    margin: 5px;
+    cursor:pointer;
+}
+
+input[type=password]{
+    display:block;
+    margin:0 auto;
+}
+
+#box img{
+    width:100px;
+    height:100px;
+}
+#box li{
+    list-style: none;
+    background-color:#60a9ff;
+    display: inline-block;
+    border-radius: 10px;
+    padding:10px;
+    margin:10px 10px;
+    font-weight: bold;
+    color:white;
+}
+#config_choices{
+    display: flex;
+    justify-content: center;
+}
+
+#config_choices a{
+    background-color: #60a9ff;
+    padding:20px;
+    margin:10px;
+    border-radius: 50%;
+    color:white
 }

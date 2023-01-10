@@ -12,8 +12,9 @@ include_once("../connection.php");
     <title>Manage Doctors</title>
 </head>
 <body>
+    <main id="box">
     <h1>Doctor Management</h1>
-    <a href="addDoctor.php" class="addBtn">Add Doctor</a>
+    <a href="addDoctor.php"><button class="addBtn">Add Doctor</button></a>
     <h2>Doctor Login Information</h2>
     <table>
         <thead>
@@ -21,6 +22,7 @@ include_once("../connection.php");
                 <th>Email Address</th>
                 <th>Password</th>
                 <th>Activated</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -36,6 +38,10 @@ include_once("../connection.php");
                     echo"<td>".$row['email_address']."</td>";
                     echo"<td>**********</td>";
                     echo"<td>".$row['activated']."</td>";
+                    echo "<td>
+                    <a href=\"#\"><button>Change password</button></a>
+                    <a href=\"deleteAccount.php?email=".$row['email_address']."\"><button class=\"deleteBtn\">Delete User</button></a>
+                    </td>";
                     echo"</tr>";
                 }
             }
@@ -52,6 +58,7 @@ include_once("../connection.php");
                 <th>Professional Statement</th>
                 <th>Active Since</th>
                 <th>Email Address</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -70,6 +77,7 @@ include_once("../connection.php");
                 echo"<td>".$row['professional_statement']."</td>";
                 echo"<td>".$row['active_since']."</td>";
                 echo"<td>".$row['email_address']."</td>";
+                echo"<td><a href=\"#\"><button>Edit</button></a></td>";
                 echo"</tr>";    
             }
         }
@@ -87,6 +95,7 @@ include_once("../connection.php");
                 <th>Country</th>
                 <th>Start date</th>
                 <th>End date</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -106,6 +115,41 @@ include_once("../connection.php");
                 echo"<td>".$row['country']."</td>";
                 echo"<td>".$row['start_date']."</td>";
                 echo"<td>".$row['end_date']."</td>";
+                echo"<td><a href=\"#\"><button>Edit</button></a></td>";
+                echo"</tr>";
+            }
+        }
+        ?>
+    </tbody>
+    </table>
+    <h2>Doctor Qualification Information</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Doctor ID</th>
+                <th>Qualification Name</th>
+                <th>Institute Name</th>
+                <th>Procurement Date</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+        <?php
+
+        $query="SELECT * FROM qualification";
+        $qualificationResult=mysqli_query($con, $query);
+        if($qualificationResult && mysqli_num_rows($qualificationResult)>0)
+        {
+            while($row=mysqli_fetch_assoc($qualificationResult))
+            {
+                echo"<tr>";
+                echo"<td>".$row['id']."</td>";
+                echo"<td>".$row['doctor_id']."</td>";
+                echo"<td>".$row['qualification_name']."</td>";
+                echo"<td>".$row['institute_name']."</td>";
+                echo"<td>".$row['procurement_date']."</td>";
+                echo"<td><a href=\"#\"><button>Edit</button></a></td>";
                 echo"</tr>";
             }
         }
@@ -113,6 +157,7 @@ include_once("../connection.php");
     </tbody>
     </table>
     <h2>Doctor Specialization Information</h2>
+    <a href="#"><button class="addBtn">Add Doctor Specialization</button></a>
     <table>
         <thead>
             <tr>
@@ -142,38 +187,7 @@ include_once("../connection.php");
         ?>
     </tbody>
     </table>
-    <h2>Doctor Qualification Information</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Doctor ID</th>
-                <th>Qualification Name</th>
-                <th>Institute Name</th>
-                <th>Procurement Date</th>
-            </tr>
-        </thead>
-        <tbody>
-        <?php
-
-        $query="SELECT * FROM qualification";
-        $qualificationResult=mysqli_query($con, $query);
-        if($qualificationResult && mysqli_num_rows($qualificationResult)>0)
-        {
-            while($row=mysqli_fetch_assoc($qualificationResult))
-            {
-                echo"<tr>";
-                echo"<td>".$row['id']."</td>";
-                echo"<td>".$row['doctor_id']."</td>";
-                echo"<td>".$row['qualification_name']."</td>";
-                echo"<td>".$row['institute_name']."</td>";
-                echo"<td>".$row['procurement_date']."</td>";
-                echo"</tr>";
-            }
-        }
-        ?>
-    </tbody>
-    </table>
+    
     <h2>Doctor Work Schedule Information</h2>
     <table>
         <thead>
@@ -208,5 +222,6 @@ include_once("../connection.php");
         ?>
     </tbody>
     </table>
+    </main>
 </body>
 </html>

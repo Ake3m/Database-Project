@@ -12,20 +12,20 @@ include_once("adminHeader.php");
     <title>Admin Panel</title>
 </head>
 <body>
-    <main>
+    <main id="box">
     <h1>Control Panel</h1>
     <p>The admin panel is used to make modifications in the system. This means that changes made here can be catestrophic to the system and may cause things to brea. Please be sure of all the changes you make here. Thank you. </p>
     <div id="config_choices">
-        <a class="box" href="manageDoctor.php">       
+        <a href="manageDoctor.php">       
             Manage doctors
         </a> 
-        <a  class="box" href="manageCustomers.php"> 
+        <a href="manageCustomers.php"> 
                 Manage customers
         </a>
-        <a  class="box" href="manageSpecialization.php"> 
+        <a href="manageSpecialization.php"> 
                 Manage specilizaions
         </a>
-        <a class="box" href="#">Manage appointments</a>
+        <a href="#">Manage appointments</a>
     </div>
 </main>
 </body>

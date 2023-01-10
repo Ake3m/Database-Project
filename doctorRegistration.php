@@ -62,12 +62,7 @@ if(isset($_POST['registerDoctor']))
         header("location: doctorRegistration.php?error=scheduleError");
         exit();
     }
-    // updateBasicInfo($con,$id, $first_name, $surname,$personal_statement, $active_since);
-    // updatePassword($con, $email,$newPassword);
-    // insertWorkSchedule($con, $id, $monday, $tuesday, $wednesday, $thursday, $friday);
-    // insertQualifications($con, $id, $quaification_name, $institude_name, $procurementDate);
-    // insertSpecializations($con, $id, $speciality_list);
-    // insertAffiliation($con, $id, $hospital_name, $hospital_city, $hospital_country,$start_date, $end_date);
+    
     completeRegistration($con, $id, $email, $first_name, $surname, $personal_statement,$active_since, $newPassword, $quaification_name, $institute_name, $procurementDate, $speciality_list, $hospital_name, $hospital_city, $hospital_country,$start_date, $end_date, $monday, $tuesday, $wednesday, $thursday, $friday);
     
 
@@ -109,7 +104,7 @@ if(isset($_POST['registerDoctor']))
         <p>The personal statement is basically a formal introduction. It helps give patients an idea of your background</p>
         
         <label for="personal_statment">Personal Statement</label>
-        <textarea id="personal_statment" name="pStatement" rows="10" cols="100" required></textarea>
+        <textarea id="personal_statment" name="pStatement" rows="10" cols="60" required></textarea>
         <p>The active since field refers to the year in which you began practicing medicine.</p>
         <label for="active_since">Active since</label>
         <input id="active_since" type="date" name="active_since_date" required>
