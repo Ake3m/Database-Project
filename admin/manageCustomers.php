@@ -38,7 +38,7 @@ include_once("adminFunctions.php");
                     echo"<td>**********</td>";
                     echo "<td>
                     <a href=\"adminChangePassword.php?email=".$row['email_address']."\"><button>Change password</button></a>
-                    <a href=\"deleteAccount.php?email=".$row['email_address']."\"><button>Delete User</button></a>
+                    <a href=\"deleteAccount.php?email=".$row['email_address']."\"><button class=\"deleteBtn\">Delete User</button></a>
                     </td>";
                     echo"</tr>";
                 }
@@ -84,7 +84,7 @@ include_once("adminFunctions.php");
                     echo"<td>".$row['health_insurance_number']."</td>";
                     echo"<td>".$row['address']."</td>";
                     echo "<td>
-                    <a href=\"#\"><button>Edit</button></a>
+                    <a href=\"editCustomerInfo.php?id=".$row['uid']."\"><button>Edit</button></a>
                     </td>";
                     echo"</tr>";
                 }

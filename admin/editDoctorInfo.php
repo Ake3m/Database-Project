@@ -97,7 +97,7 @@ if(isset($_POST['cancel']))
         <p>Please verify all the information before submitting</p>
         <input type="submit" name="update" value="Submit">
     </form>
-    <form>
+    <form method="post">
         <input type="submit" name="cancel" value="Cancel">
     </form>
     </main>
