@@ -64,9 +64,9 @@ if(isset($_POST['cancel']))
         $row=mysqli_fetch_assoc($result);
         ?>
         <label for="fname">First Name </label>
-        <input id="fname" type="text" value="<?php echo $row['first_name']?>" name="fname">
+        <input id="fname" type="text" value="<?php echo $row['first_name']?>" name="fname" required>
         <label for="sname">Last Name</label>
-        <input id="sname" type="text" value=" <?php echo $row['last_name']?>"" name="sname">
+        <input id="sname" type="text" value=" <?php echo $row['last_name']?>"" name="sname" required>
         
         
         <label for="personal_statment">Personal Statement</label>

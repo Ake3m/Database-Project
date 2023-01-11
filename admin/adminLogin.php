@@ -21,9 +21,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel</title>
+    <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-<div>
+<div id="box">
         <h1>Admin Login</h1>
         <form method="post">
             <p>

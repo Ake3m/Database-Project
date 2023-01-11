@@ -30,14 +30,14 @@ include_once("header.php");
             {
                 while($row=mysqli_fetch_assoc($queryResult))
                 {
-                    echo "<input type=\"radio\" id=\"s_choice".$row['id']."\" name=\"specialization\" value=\"".$row['id']."\"/>";
+                    echo "<input type=\"radio\" id=\"s_choice".$row['id']."\" name=\"specialization\" value=\"".$row['id']."\" required/>";
                     echo "<label for=\"s_choice".$row['id']."\">".$row['specialization_name']."</label>";
                 }
             }
             echo "</fieldset>"
         ?>
         <input type="submit" value="Search" name="search"/>
-        <input type="reset" value="Clear" name="reset"/>
+        <input type="Reset" value="Clear" name="reset"/>
     </form>
 
     <?php

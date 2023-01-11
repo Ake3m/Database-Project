@@ -46,9 +46,9 @@ if(isset($_POST['cancel']))
         <input id="current_password" type="password" required name="current_password"/>
         <hr>
         <label for="new_password">Enter your new password: </label>
-        <input id="new_password" type="password" required name="new_password"/>
+        <input id="new_password" type="password" required name="new_password" minlength="5" maxlength="20"/>
         <label for="new_password2">Enter your new password: </label>
-        <input id="new_password2" type="password" required name="new_password2"/>
+        <input id="new_password2" type="password" required name="new_password2" minlength="5" maxlength="20"/>
         <br>
         <input type="submit" name="updatePass" value="Update password"/>
     </form>
